@@ -47,7 +47,7 @@ class Tag:
 
     def __str__(self):
         return self.makeTag('')
-    
+
     def __repr__(self):
         return self.__str__()
 
@@ -177,15 +177,12 @@ class Body(BlockContainer):
 class Html(BlockContainer):
     def __init__(self):
         BlockContainer.__init__(self, 'html')
-        self.addAttr('xmlns', 'http://www.w3.org/1999/xhtml')
 
     def __str__(self):
-        s = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" ' \
-            + '"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">'
-        return s + BlockContainer.__str__(self)
+        return '<!DOCTYPE html>' + BlockContainer.__str__(self)
 
 def main():
-    print 'stuff'
+    print 'hello'
 
 if __name__ == '__main__':
     main()
