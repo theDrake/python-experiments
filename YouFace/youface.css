@@ -1,0 +1,245 @@
+/* CSS reset rules. See http://meyerweb.com/eric/tools/css/reset/ */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em,
+font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b,
+u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table,
+caption, tbody, tfoot, thead, tr, th, td {
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  line-height: 1;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: none;
+}
+
+:focus {
+  outline: 0;
+}
+
+ins {
+  text-decoration: none;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+/* blog style rules */
+
+body {
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #009900;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  margin-top: 1.25em;
+}
+
+h2, h4, h6 {
+  font-style: italic;
+}
+
+h1 { font-size: 130%; }
+h2 { font-size: 120%; }
+h3 { font-size: 110%; }
+h4 { font-size: 105%; }
+h5 { font-size: 95%; }
+h6 { font-size: 90%; }
+
+ul, ol {
+  padding-top: .75em;
+}
+
+li {
+  padding: .15em 0;
+  margin-left: 3em;
+}
+
+p, pre, blockquote {
+  margin-top: .75em;
+}
+
+ol > li:first-child > p:first-child,
+ul > li:first-child > p:first-child
+{
+  margin-top: 0;
+}
+
+code {
+  line-height: 1;
+  padding: 0 2px;
+  border: 1px solid black;
+  background: #ffffcc;
+}
+
+pre {
+  line-height: 1.25;
+  padding: .5em;
+  border: 1px solid black;
+  background: #ffffcc;
+}
+
+pre code {
+  line-height: 1.25;
+  padding: 0;
+  border: none;
+}
+
+blockquote {
+  margin-left: 2em;
+  margin-right: 2em;
+  padding: .5em;
+  border: 1px solid black;
+  background: #ddffdd;
+}
+
+blockquote p:first-child {
+    margin-top: 0;
+}
+
+label {
+  display: block;
+  font-style: italic;
+}
+
+input[type=text], input[type=password], textarea {
+  margin-top: 5px;
+  width: 735px;
+}
+
+.gadget input[type=text] {
+  width: 155px;
+}
+
+input[type=submit] {
+  width: 100px;
+}
+
+input[value=Unfriend], input[value=Change] {
+  margin-left: 640px;
+}
+
+input[value=Login] {
+  margin-left: 440px;
+}
+
+textarea {
+  height: 400px;
+}
+
+#maincontainer {
+  width: 960px;
+  margin: 10px auto;
+}
+
+#header {
+  width: 936px;
+  padding: 10px;
+  border: 2px solid black;
+  float: left;
+  background-color: #D2B48C;
+  text-align: center;
+}
+
+#header a {
+  color: black;
+}
+
+#header h1 {
+  font-size: 200%;
+  margin-top: 0;
+}
+
+#header h2 {
+  font-size: 125%;
+  font-style: italic;
+  margin-top: .5em;
+}
+
+#maincolumn {
+  width: 775px;
+  float: left;
+}
+
+#sidebar {
+  width: 185px;
+  float: left;
+  background-color: #ffffff;
+}
+
+.box {
+  width: 741px;
+  padding: 10px;
+  margin-top: 10px;
+  border: 2px solid black;
+  line-height: 1.25;
+}
+
+.box > h1 {
+  font-size: 130%;
+  margin: 0;
+  line-height: 1;
+}
+
+.gadget {
+  margin-top: 10px;
+  padding: 10px;
+  border: 2px solid black;
+  width: 161px;
+}
+
+.gadget h1 {
+  margin: 0 0 5px 0;
+}
+
+.gadget ul {
+  padding-top: 0;
+  list-style: none;
+}
+
+.gadget li {
+  margin-left: 0;
+}
+
+@media print {
+  body {
+    font-family: Georgia, serif;
+  }
+
+  #header {
+    width: 741px;
+  }
+
+  #sidebar {
+    display: none;
+  }
+
+  .box {
+    page-break-inside: avoid;
+  }
+}
