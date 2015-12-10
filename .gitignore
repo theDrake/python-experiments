@@ -53,5 +53,11 @@ docs/_build/
 # PyBuilder
 target/
 
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
 # Mac OS X
 .DS_Store
