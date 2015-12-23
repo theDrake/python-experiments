@@ -1,4 +1,6 @@
-import os, os.path
+#!/usr/bin/python2
+
+import sys, getopt, os, os.path
 
 #------------------------------------------------------------------------------
 #    Function: delete_files
@@ -27,3 +29,13 @@ def delete_files(path, filename):
                     num_files_deleted += 1
 
     return num_files_deleted
+
+def main():
+    if len(sys.argv) < 3:
+        print 'Usage: delete_files.py [starting_dir] [file_to_delete]'
+    else:
+        starting_dir = sys.argv[1]
+        file_to_delete = sys.argv[2]
+
+if __name__ == '__main__':
+    main()
