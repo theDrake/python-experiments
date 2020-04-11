@@ -1,16 +1,16 @@
 #!usr/bin/python2
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Filename: assembler.py
 #
-#     Authors: David C. Drake (http://davidcdrake.com) and Shawn Redmond
+#     Authors: David C. Drake (https://davidcdrake.com) and Shawn Redmond
 #
 # Description: Functions for parsing and translating a Hack assembly code file
 #              to produce a Hack machine code file according to the
 #              specifications outlined in "The Elements of Computing Systems,"
 #              by Nisan and Schocken (MIT Press, 2005). Developed using Python
 #              2.7.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 import sys
 import os.path
@@ -104,7 +104,7 @@ COMPUTATIONS = {
     'D|M': '010101',
 }
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: parse
 #
 # Description: Parses a file of Hack assembly code, producing a list of tuples
@@ -114,7 +114,7 @@ COMPUTATIONS = {
 #      Inputs: fin - An open file handle containing assembly code.
 #
 #     Outputs: A list of tuples representing parsed lines of assembly code.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def parse(fin):
     if DEBUG:
         print 'Parsing file: ' + str(fin)
@@ -141,7 +141,7 @@ def parse(fin):
 
     return parsedAssemblyCode
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: parseLine
 #
 # Description: Parses a single line of Hack assembly code, producing a tuple
@@ -164,7 +164,7 @@ def parse(fin):
 #
 #     Outputs: A tuple representing a parsed version of 'line' (or 'None' if
 #              'line' was empty or consisted only of a comment).
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def parseLine(line, lineNum):
     if DEBUG:
         print 'Parsing line: ' + line
@@ -219,7 +219,7 @@ def parseLine(line, lineNum):
 
     return ('C_INSTRUCTION', dest, comp, jump, line, lineNum)
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: processSymbols
 #
 # Description: Searches for L-instructions (user-defined labels) within a list
@@ -234,7 +234,7 @@ def parseLine(line, lineNum):
 #
 #     Outputs: None. However, labels may be added to the LABEL_SYMBOLS
 #              dictionary.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def processSymbols(parsedCodeList):
     if DEBUG:
         print 'Processing symbols in parsed code...'
@@ -251,7 +251,7 @@ def processSymbols(parsedCodeList):
         else:
             lineNum += 1
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: translate
 #
 # Description: Given a list of tuples representing parsed Hack assembly
@@ -263,7 +263,7 @@ def processSymbols(parsedCodeList):
 #                               instructions.
 #
 #     Outputs: A list of strings containing Hack machine code instructions.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def translate(parsedCodeList):
     if DEBUG:
         print 'Translating parsed code...'
@@ -280,7 +280,7 @@ def translate(parsedCodeList):
 
     return machineCode
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: translateLine
 #
 # Description: Given a list of tuples representing parsed Hack assembly
@@ -292,7 +292,7 @@ def translate(parsedCodeList):
 #
 #     Outputs: A string containing a Hack machine code instruction (or an empty
 #              string in the case of invalid input).
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def translateLine(line):
     if DEBUG:
         print '\tTranslating line: ' + str(line)
@@ -340,7 +340,7 @@ def translateLine(line):
 
     return instruction
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: isReservedOrIsLabel
 #
 # Description: Determines whether a given string is a reserved word within the
@@ -350,12 +350,12 @@ def translateLine(line):
 #
 #     Outputs: 'True' if the string is reserved or is a user-defined label,
 #              'False' otherwise.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def isReservedOrIsLabel(s):
     return s in PREDEFINED_SYMBOLS or s in DESTINATIONS or s in JUMPS or \
            s in LABEL_SYMBOLS
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: isSymbol
 #
 # Description: Determines whether a given string could legally serve as a
@@ -370,7 +370,7 @@ def isReservedOrIsLabel(s):
 #
 #     Outputs: 'True' if the string satisfies the basic criteria for a Hack
 #              assembly language symbol, 'False' otherwise.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def isSymbol(s):
     if len(s) < 1 or s[0].isdigit():
         return False
@@ -382,7 +382,7 @@ def isSymbol(s):
 
     return True
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: isConstant
 #
 # Description: Determines whether a given string could legally serve as an
@@ -394,7 +394,7 @@ def isSymbol(s):
 #
 #     Outputs: 'True' if the string satisfies the basic criteria for a Hack
 #              assembly language integer constant, 'False' otherwise.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def isConstant(s):
     if len(s) < 1 or len(s) > 5 or not s.isdigit():
         return False
@@ -405,7 +405,7 @@ def isConstant(s):
 
     return False
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: fail
 #
 # Description: Prints an informative error message, then exits the program.
@@ -417,13 +417,13 @@ def isConstant(s):
 #                                 error.
 #
 #     Outputs: None.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def fail(errorMessage, sourceLineNum, sourceLineString):
     print 'Error: ' + errorMessage + ' on line ' + str(sourceLineNum)
     print '\t' + sourceLineString
     sys.exit(-1)
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: main
 #
 # Description: Processes command line arguments (printing usage information and
@@ -438,7 +438,7 @@ def fail(errorMessage, sourceLineNum, sourceLineString):
 #     Outputs: None. However, if the program completes successfully, an output
 #              file will be created. It will have the same name as the input
 #              file, but with a '.hack' extension rather than '.asm'.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def main():
     # Check for correct number and type of arguments:
     if len(sys.argv) != 2 or \

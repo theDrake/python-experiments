@@ -2,7 +2,7 @@
 
 import sys, getopt, os, os.path
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: delete_files
 #
 # Description: Recursively searches a given directory for all files of a given
@@ -12,7 +12,7 @@ import sys, getopt, os, os.path
 #              filename - Name of the file(s) to be deleted.
 #
 #     Outputs: Number of files deleted.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def delete_files(path, filename):
     num_files_deleted = 0
     path_list = []

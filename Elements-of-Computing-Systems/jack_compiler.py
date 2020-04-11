@@ -1,15 +1,15 @@
 #!usr/bin/python2
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Filename: jack_compiler.py
 #
-#     Authors: David C. Drake (http://davidcdrake.com) and Thomas Gull
+#     Authors: David C. Drake (https://davidcdrake.com) and Thomas Gull
 #
 # Description: Classes and functions for compiling Jack code into VM code
 #              according to the specifications outlined in "The Elements of
 #              Computing Systems," by Nisan and Schocken (MIT Press, 2005).
 #              Developed using Python 2.7.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 import sys
 import os
@@ -572,7 +572,7 @@ class CompilationEngine:
         # else:
             # fail("Erroneous subroutine call.", self.input_file, self.peek()[2])
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: integerConstant
 #
 # Description: Determines whether a given integer is a valid Jack integer
@@ -582,11 +582,11 @@ class CompilationEngine:
 #      Inputs: integer - The value to be tested.
 #
 #     Outputs: 'True' if the integer is valid, 'False' otherwise.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def integerConstant(integer):
     return integer >= 0 and integer <= 32767
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: fail
 #
 # Description: Prints an error message, along with the line of code that
@@ -597,13 +597,13 @@ def integerConstant(integer):
 #              line_number - The line number where the error occurred.
 #
 #     Outputs: None.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def fail(error_msg, source, line_number):
     print >>sys.stderr, 'Error on line %d: %s' % (line_number, error_msg)
     print >>sys.stderr, '\t%s' % source
     sys.exit(-1)
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: main
 #
 # Description: Validates command line input, then
@@ -613,7 +613,7 @@ def fail(error_msg, source, line_number):
 #                         line argument.
 #
 #     Outputs: None. However, one or more VM output files is created.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def main():
     output_files = {}
     if len(sys.argv) != 2:

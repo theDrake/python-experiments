@@ -1,9 +1,9 @@
 #!usr/bin/python2
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Filename: vm.py
 #
-#     Authors: David C. Drake (http://davidcdrake.com) and Remington Scow
+#     Authors: David C. Drake (https://davidcdrake.com) and Remington Scow
 #
 # Description: A 'CodeWriter' class and a collection of funtions for parsing
 #              and translating instructions from a high-level, stack-based,
@@ -11,7 +11,7 @@
 #              according to the specifications outlined in "The Elements of
 #              Computing Systems," by Nisan and Schocken (MIT Press, 2005).
 #              Developed using Python 2.7.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 import sys
 import os
@@ -75,12 +75,12 @@ SYMBOLS = {
     'KBD':    '24576'
 }
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #       Class: CodeWriter
 #
 # Description: Generates Hack assembly code corresponding to given VM commands
 #              and writes them to an output file.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 class CodeWriter:
     #--------------------------------------------------------------------------
     #      Method: __init__
@@ -600,7 +600,7 @@ class CodeWriter:
         for i in range(int(numLocals)):
             self.writePushPop('push', 'constant', 0)
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: fail
 #
 # Description: Prints an informative error message, then exits the program.
@@ -608,12 +608,12 @@ class CodeWriter:
 #      Inputs: errorMessage - A string specifying the type of error.
 #
 #     Outputs: None.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def fail(error_message):
     sys.stderr.write(error_message)
     sys.exit(-1)
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: isConstant
 #
 # Description: Determines whether a given string could legally serve as an
@@ -625,11 +625,11 @@ def fail(error_message):
 #
 #     Outputs: 'True' if the string satisfies the basic criteria for a VM or
 #              Hack assembly language integer constant, 'False' otherwise.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def isConstant(string):
     return string and string.isdigit() and (0 <= int(string) <= 32767)
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: isSymbol
 #
 # Description: Determines whether a given string could legally serve as a
@@ -645,7 +645,7 @@ def isConstant(string):
 #
 #     Outputs: 'True' if the string satisfies the basic criteria for a VM or
 #              Hack assembly language symbol, 'False' otherwise.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def isSymbol(string):
     if not string or string[0].isdigit():
         return False
@@ -655,7 +655,7 @@ def isSymbol(string):
             return False
     return True
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: processFile
 #
 # Description: Processes a list of tuples containing VM commands and arguments.
@@ -665,7 +665,7 @@ def isSymbol(string):
 #              commands   - List of tuples containing commands and arguments.
 #
 #     Outputs: None.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def processFile(codeWriter, filename, commands):
     codeWriter.setFileName(filename[:filename.find('.vm')])
     for command in commands:
@@ -686,7 +686,7 @@ def processFile(codeWriter, filename, commands):
         else:
             codeWriter.writeArithmetic(command[0])
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: parseFile
 #
 # Description: Parses a file of VM code, producing a list of tuples containing
@@ -695,7 +695,7 @@ def processFile(codeWriter, filename, commands):
 #      Inputs: filename - Name (or complete path) of a file containing VM code.
 #
 #     Outputs: A list of tuples representing parsed lines of VM code.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def parseFile(filename):
     fin = open(filename, 'r')
     lines = fin.readlines()
@@ -711,7 +711,7 @@ def parseFile(filename):
         line_number += 1
     return parsed_lines
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: parseLine
 #
 # Description: Parses a single line of VM code, producing a tuple containing a
@@ -724,7 +724,7 @@ def parseFile(filename):
 #
 #     Outputs: A tuple containing a command and its arguments (or 'None' if
 #              'line' was empty or consisted only of a comment).
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def parseLine(line, line_number):
     if DEBUG:
         print '\tParsing line ' + str(line_number) + ': ' + line[:-1]
@@ -777,7 +777,7 @@ def parseLine(line, line_number):
 
     return line
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: main
 #
 # Description: Processes command line arguments, manages the parsing of one
@@ -792,7 +792,7 @@ def parseLine(line, line_number):
 #     Outputs: None. However, if the program completes successfully, an output
 #              file will be created. It will have the same name as the input
 #              file, but with a '.asm' extension rather than '.vm'.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def main():
     # Check for the correct number of command-line arguments:
     if len (sys.argv) != 2:

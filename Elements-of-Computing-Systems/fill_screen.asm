@@ -1,7 +1,7 @@
 //    Filename: fill_screen.asm
 // Description: Fills the screen with black pixels while any key is held down.
 //              While no key is held down, the screen is completely clear.
-//      Author: David C. Drake (http://davidcdrake.com)
+//      Author: David C. Drake (https://davidcdrake.com)
 
     @8192
     D=A

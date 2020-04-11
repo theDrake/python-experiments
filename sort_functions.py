@@ -1,23 +1,22 @@
 #!/usr/bin/env python
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Filename: sort_functions.py
 #
-#      Author: David C. Drake (http://davidcdrake.com)
+#      Author: David C. Drake (https://davidcdrake.com)
 #
 # Description: A collection of sort functions -- bubble sort, shaker sort,
 #              selection sort, quick sort, modified quick sort, merge sort, and
 #              hash sort -- as well as helper functions to analyze the
 #              effectiveness and efficiency of those functions. Developed using
 #              Python 2.7.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 import sys
 import random
 import math
 
-
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: bubbleSort
 #
 # Description: Sorts a list using a "bubble sort" algorithm.
@@ -26,7 +25,7 @@ import math
 #
 #     Outputs: A tuple containing the number of element comparisons and the
 #              number of element swaps that occurred.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def bubbleSort(list):
     totalComparisons, totalSwaps = (0, 0)
 
@@ -40,8 +39,7 @@ def bubbleSort(list):
 
     return (totalComparisons, totalSwaps)
 
-
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: bubbleSortPass
 #
 # Description: Performs one pass of a "bubble sort" on a list.
@@ -50,7 +48,7 @@ def bubbleSort(list):
 #
 #     Outputs: A tuple containing the number of element comparisons and the
 #              number of element swaps that occurred.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def bubbleSortPass(list):
     comparisons, swaps = 0, 0
 
@@ -62,8 +60,7 @@ def bubbleSortPass(list):
 
     return (comparisons, swaps)
 
-
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: shakerSort
 #
 # Description: Sorts a list using a "shaker sort" algorithm.
@@ -72,7 +69,7 @@ def bubbleSortPass(list):
 #
 #     Outputs: A tuple containing the number of element comparisons and the
 #              number of element swaps that occurred.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def shakerSort(list):
     totalComparisons, totalSwaps = 0, 0
 
@@ -86,8 +83,7 @@ def shakerSort(list):
 
     return (totalComparisons, totalSwaps)
 
-
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: shakerSortPass
 #
 # Description: Performs one pass of a "shaker sort" on a list.
@@ -96,7 +92,7 @@ def shakerSort(list):
 #
 #     Outputs: A tuple containing the number of element comparisons and the
 #              number of element swaps that occurred.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def shakerSortPass(list):
     comparisons, swaps = 0, 0
 
@@ -113,8 +109,7 @@ def shakerSortPass(list):
 
     return (comparisons, swaps)
 
-
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: selectionSort
 #
 # Description: Sorts the elements of a list via the "selection sort" strategy.
@@ -123,7 +118,7 @@ def shakerSortPass(list):
 #
 #     Outputs: A tuple containing the number of element comparisons and the
 #              number of element swaps that occurred.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def selectionSort(list):
     comparisons, swaps = 0, 0
 
@@ -139,8 +134,7 @@ def selectionSort(list):
 
     return (comparisons, swaps)
 
-
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: quickSort
 #
 # Description: Sorts the elements of a list via the "quick sort" strategy.
@@ -149,12 +143,11 @@ def selectionSort(list):
 #
 #     Outputs: A tuple containing the number of element comparisons and the
 #              number of element swaps that occurred.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def quickSort(list):
     return quickSortOverRange(list, 0, len(list) - 1)
 
-
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: quickSortOverRange
 #
 # Description: Sorts a given range of a list via the "quick sort" strategy.
@@ -166,15 +159,14 @@ def quickSort(list):
 #
 #     Outputs: A tuple containing the number of element comparisons and the
 #              number of element swaps that occurred.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def quickSortOverRange(list, low, high):
     comparisons, swaps = 0, 0
 
     if high <= low:
         return (comparisons, swaps)
 
-    # Divide the list/sub-list by comparison of each element to the value of
-    # the first element:
+    # Divide list/sub-list by comparison of each element to first element:
     leftMostGreaterThan = low + 1
     for i in range(low + 1, high + 1):
         comparisons += 1
@@ -185,13 +177,13 @@ def quickSortOverRange(list, low, high):
                 swaps += 1
             leftMostGreaterThan += 1
 
-    # Move the first element (if necessary) so it can serve as the pivot point:
+    # Move first element (if necessary) so it can serve as pivot point:
     if (leftMostGreaterThan - 1) > low:
         list[low], list[leftMostGreaterThan - 1] = \
                    list[leftMostGreaterThan - 1], list[low]
         swaps += 1
 
-    # Split the list/sub-list at the pivot point and sort each half:
+    # Split list/sub-list at pivot point and sort each half:
     (c, s) = quickSortOverRange(list, low, leftMostGreaterThan - 2)
     comparisons += c
     swaps += s
@@ -201,8 +193,7 @@ def quickSortOverRange(list, low, high):
 
     return (comparisons, swaps)
 
-
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: modifiedQuickSort
 #
 # Description: Sorts the elements of a list via the "modified quick sort"
@@ -212,7 +203,7 @@ def quickSortOverRange(list, low, high):
 #
 #     Outputs: A tuple containing the number of element comparisons and the
 #              number of element swaps that occurred.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def modifiedQuickSort(list):
     # Swap the first and middle elements:
     list[0], list[len(list) / 2] = list[len(list) / 2], list[0]
@@ -221,8 +212,7 @@ def modifiedQuickSort(list):
     # Take the initial swap into account:
     return (comparisons, swaps + 1)
 
-
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: mergeSort
 #
 # Description: Sorts a list, or a range within a list, via the "merge sort"
@@ -236,7 +226,7 @@ def modifiedQuickSort(list):
 #
 #     Outputs: A tuple containing the number of element comparisons and the
 #              number of element swaps that occurred.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def mergeSort(list, low=0, high=-1):
     totalComparisons, totalSwaps = 0, 0
 
@@ -288,8 +278,7 @@ def mergeSort(list, low=0, high=-1):
 
     return (totalComparisons, totalSwaps)
 
-
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: hashSort
 #
 # Description: Sorts a list via the "hash sort" strategy. Assumes that each
@@ -299,7 +288,7 @@ def mergeSort(list, low=0, high=-1):
 #
 #     Outputs: A tuple containing the number of element comparisons and the
 #              number of element swaps that occurred.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def hashSort(list):
     comparisons, swaps = 0, 0
 
@@ -320,8 +309,7 @@ def hashSort(list):
 
     return (comparisons, swaps)
 
-
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: createRandomList
 #
 # Description: Creates a list of a given length whose elements are integers
@@ -333,7 +321,7 @@ def hashSort(list):
 #                  value of its elements.
 #
 #     Outputs: A random list of 'n' integers between 0 and 'n' (exclusive).
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def createRandomList(n):
     randomList = []
     for i in range(n):
@@ -341,8 +329,7 @@ def createRandomList(n):
 
     return randomList
 
-
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: createMostlySortedList
 #
 # Description: Creates a list of a given length whose elements are integers
@@ -353,17 +340,16 @@ def createRandomList(n):
 #      Inputs: n - The length of the list as well as one more than the maximum
 #                  value of its elements.
 #
-#     Outputs: A mostly sorted list of 'n' randomly generated integers between
-#              0 and 'n' (exclusive).
-#------------------------------------------------------------------------------
+#     Outputs: A mostly sorted list of 'n' randomly generated integers between 0
+#              and 'n' (exclusive).
+#-------------------------------------------------------------------------------
 def createMostlySortedList(n):
     list = createRandomList(n)
     list[0], list[n - 1] = list[n - 1], list[0]
 
     return list
 
-
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: isSorted
 #
 # Description: Determines whether a given list is sorted (in ascending order).
@@ -372,7 +358,7 @@ def createMostlySortedList(n):
 #
 #     Outputs: 'True' if all the elements in the list are in ascending order,
 #              'False' otherwise.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def isSorted(list):
     for i in range(len(list) - 1):
         if list[i] > list[i + 1]:
@@ -380,8 +366,7 @@ def isSorted(list):
 
     return True
 
-
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: compareLists
 #
 # Description: Compares two lists of equal length, returning the number of
@@ -389,9 +374,9 @@ def isSorted(list):
 #
 #      Inputs: list1, list2 - The lists to be compared.
 #
-#     Outputs: The number of differences between the lists (or -1 if an error
-#              is detected).
-#------------------------------------------------------------------------------
+#     Outputs: The number of differences between the lists (or -1 if an error is
+#              detected).
+#-------------------------------------------------------------------------------
 def compareLists(list1, list2):
     if len(list1) != len(list2):
         print "Error: lists of unequal length passed to 'compareLists()'."
@@ -404,8 +389,7 @@ def compareLists(list1, list2):
 
     return differences
 
-
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: testSortFunction
 #
 # Description: Tests a given sort function on a given list and prints test
@@ -414,26 +398,25 @@ def compareLists(list1, list2):
 #      Inputs: sortFunction - The sort function to be tested.
 #              list         - The list to be sorted (to test the function).
 #              showLists    - If 'True', the list will be printed to the screen
-#                             in both its original and sorted forms. ('False'
-#                             by default.)
+#                             in both its original and sorted forms. ('False' by
+#                             default.)
 #
 #     Outputs: 'True' if the list is sorted, 'False' otherwise. (Also prints
 #              relevant information to the screen, such as the number of swaps
 #              performed by the sort function, the number of differences
 #              between the original list and its sorted version, and whether or
 #              not the list was accurately sorted.)
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 def testSortFunction(sortFunction, list, showLists=False):
     print 'Testing', str(sortFunction), 'on random list of length', \
           str(len(list)) + ':'
 
-    # Copy the original list (to compare with the sorted list later):
+    # Copy original list (to compare with sorted list later):
     listCopy = []
     for e in list:
         listCopy.append(e)
 
-    # Sort the list and display data regarding the effectiveness and efficiency
-    # of the given sort function:
+    # Sort list and display data regarding sort effectiveness and efficiency:
     (comparisons, swaps) = sortFunction(list)
     print '\tComparisons:\t' + str(comparisons)
     print '\tSwaps:\t\t' + str(swaps)
@@ -445,8 +428,7 @@ def testSortFunction(sortFunction, list, showLists=False):
 
     return isSorted(list)
 
-
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: testMultipleSortFunctions
 #
 # Description: Tests a given list of sort functions on multiple lists and
@@ -458,16 +440,14 @@ def testSortFunction(sortFunction, list, showLists=False):
 #                             within those lists (1000 by default).
 #              iterations   - Number of test runs to perform on each function
 #                             (1000 by default).
-#              mostlySorted - If 'True', the functions will be tested on
-#                             "mostly sorted" lists rather than completely
-#                             random lists. ('False' by default.)
+#              mostlySorted - If 'True', the functions will be tested on "mostly
+#                             sorted" lists rather than completely random lists.
+#                             ('False' by default.)
 #
 #     Outputs: A list containing the number of times each sort function failed
 #              (with indices corresponding to those of the list of functions).
-#------------------------------------------------------------------------------
-def testMultipleSortFunctions(functionList,
-                              testListSize=1000,
-                              iterations=1000,
+#-------------------------------------------------------------------------------
+def testMultipleSortFunctions(functionList, testListSize=1000, iterations=1000,
                               mostlySorted=False):
     failuresList = []
 
@@ -484,8 +464,7 @@ def testMultipleSortFunctions(functionList,
 
     return failuresList
 
-
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Function: storePerformanceDataForMultipleSortFunctions
 #
 # Description: Collects performance data for a given list of sort functions and
@@ -499,14 +478,13 @@ def testMultipleSortFunctions(functionList,
 #
 #     Outputs: The number of tests performed, or -1 if an error occurs. (Also,
 #              data is written to an output file.)
-#------------------------------------------------------------------------------
-def storePerformanceDataForMultipleSortFunctions(filename,
-                                                 functionList,
+#-------------------------------------------------------------------------------
+def storePerformanceDataForMultipleSortFunctions(filename, functionList,
                                                  iterations=1000):
-    totalTests       = 0
+    totalTests = 0
     storeComparisons = True
-    mostlySorted     = False
-    done             = False
+    mostlySorted = False
+    done = False
 
     fout = open(filename, 'w')
     if not fout:

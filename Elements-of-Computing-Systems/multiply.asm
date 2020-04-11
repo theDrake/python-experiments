@@ -1,6 +1,6 @@
 //    Filename: multiply.asm
 // Description: Stores the value of R0 * R1 into R2.
-//      Author: David C. Drake (http://davidcdrake.com)
+//      Author: David C. Drake (https://davidcdrake.com)
 
     @R2
     M=0

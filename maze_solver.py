@@ -1,14 +1,14 @@
 #!/usr/bin/python2
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Filename: maze_solver.py
 #
-#      Author: David C. Drake (http://davidcdrake.com)
+#      Author: David C. Drake (https://davidcdrake.com)
 #
 # Description: Creates a random maze, then draws its solution. Developed using
 #              Python 2.7 and graphics.py, which is available here:
 #              http://mcsp.wartburg.edu/zelle/python/
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 from graphics import *
 from time import sleep

@@ -1,12 +1,12 @@
 #!/usr/bin/python2
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #    Filename: tile_puzzle.py
 #
-#      Author: David C. Drake (http://davidcdrake.com)
+#      Author: David C. Drake (https://davidcdrake.com)
 #
 # Description: Solves a 3x3 tile-shifting puzzle.
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 import sys
 from Queue import *
