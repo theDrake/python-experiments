@@ -1,2 +1,2 @@
 # python-experiments
-A repository for my experiments with the Python programming language.
+A repository for some of my experiments with the [Python](https://python.org) programming language.
